@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="polymorphism.">Polymorphism.</h1>
+<p><strong>Upcasting</strong> and <strong>Downcasting</strong> falls under the concept of Polymorphism. Today we will explain it using class diagram and C# code.</p>
+<h2 id="class-diagram.">Class Diagram.</h2>
+<p>Before proceeding to the code or further explanation, here is an illustration of the <strong>classes</strong> that we will use in our application.</p>
+<p>The diagram below shows the relationship between the two classes <strong>BaseClass</strong>, and <strong>DerivedClass</strong>, whereby DerivedClass <strong>inherits</strong> from BaseClass.</p>
+<pre class=" language-mermaid"><svg id="mermaid-svg-dVf2yEffUoYLXi9r" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="184.28570556640625" style="max-width: 230.99749755859375px;" viewBox="-20 -20 230.99749755859375 184.28570556640625"><style>#mermaid-svg-dVf2yEffUoYLXi9r{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}#mermaid-svg-dVf2yEffUoYLXi9r .error-icon{fill:#552222;}#mermaid-svg-dVf2yEffUoYLXi9r .error-text{fill:#552222;stroke:#552222;}#mermaid-svg-dVf2yEffUoYLXi9r .edge-thickness-normal{stroke-width:2px;}#mermaid-svg-dVf2yEffUoYLXi9r .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg-dVf2yEffUoYLXi9r .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg-dVf2yEffUoYLXi9r .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg-dVf2yEffUoYLXi9r .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg-dVf2yEffUoYLXi9r .marker{fill:#666;stroke:#666;}#mermaid-svg-dVf2yEffUoYLXi9r .marker.cross{stroke:#666;}#mermaid-svg-dVf2yEffUoYLXi9r svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-svg-dVf2yEffUoYLXi9r g.classGroup text{fill:#999;fill:#111111;stroke:none;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:10px;}#mermaid-svg-dVf2yEffUoYLXi9r g.classGroup text .title{font-weight:bolder;}#mermaid-svg-dVf2yEffUoYLXi9r .classTitle{font-weight:bolder;}#mermaid-svg-dVf2yEffUoYLXi9r .node rect,#mermaid-svg-dVf2yEffUoYLXi9r .node circle,#mermaid-svg-dVf2yEffUoYLXi9r .node ellipse,#mermaid-svg-dVf2yEffUoYLXi9r .node polygon,#mermaid-svg-dVf2yEffUoYLXi9r .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-svg-dVf2yEffUoYLXi9r .divider{stroke:#999;stroke:1;}#mermaid-svg-dVf2yEffUoYLXi9r g.clickable{cursor:pointer;}#mermaid-svg-dVf2yEffUoYLXi9r g.classGroup rect{fill:#eee;stroke:#999;}#mermaid-svg-dVf2yEffUoYLXi9r g.classGroup line{stroke:#999;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r .classLabel .box{stroke:none;stroke-width:0;fill:#eee;opacity:0.5;}#mermaid-svg-dVf2yEffUoYLXi9r .classLabel .label{fill:#999;font-size:10px;}#mermaid-svg-dVf2yEffUoYLXi9r .relation{stroke:#666;stroke-width:1;fill:none;}#mermaid-svg-dVf2yEffUoYLXi9r .dashed-line{stroke-dasharray:3;}#mermaid-svg-dVf2yEffUoYLXi9r #compositionStart,#mermaid-svg-dVf2yEffUoYLXi9r .composition{fill:#666 !important;stroke:#666 !important;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r #compositionEnd,#mermaid-svg-dVf2yEffUoYLXi9r .composition{fill:#666 !important;stroke:#666 !important;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r #dependencyStart,#mermaid-svg-dVf2yEffUoYLXi9r .dependency{fill:#666 !important;stroke:#666 !important;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r #dependencyStart,#mermaid-svg-dVf2yEffUoYLXi9r .dependency{fill:#666 !important;stroke:#666 !important;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r #extensionStart,#mermaid-svg-dVf2yEffUoYLXi9r .extension{fill:#666 !important;stroke:#666 !important;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r #extensionEnd,#mermaid-svg-dVf2yEffUoYLXi9r .extension{fill:#666 !important;stroke:#666 !important;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r #aggregationStart,#mermaid-svg-dVf2yEffUoYLXi9r .aggregation{fill:#eee !important;stroke:#666 !important;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r #aggregationEnd,#mermaid-svg-dVf2yEffUoYLXi9r .aggregation{fill:#eee !important;stroke:#666 !important;stroke-width:1;}#mermaid-svg-dVf2yEffUoYLXi9r .edgeTerminals{font-size:11px;}#mermaid-svg-dVf2yEffUoYLXi9r:root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mermaid-svg-dVf2yEffUoYLXi9r class{fill:apa;}</style><g></g><defs><marker id="extensionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 1,7 L18,13 V 1 Z"></path></marker></defs><defs><marker id="extensionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 1,1 V 13 L18,7 Z"></path></marker></defs><defs><marker id="compositionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="compositionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="aggregationStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="aggregationEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="dependencyStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 5,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="dependencyEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><g id="classid-BaseClass-178" class="classGroup" transform="translate(24.48486328125,0 )"><rect x="0" y="0" width="142.02777099609375" height="52.142852783203125" class=" "></rect><text y="15" x="0"><tspan class="title" x="48.84312629699707">BaseClass</tspan></text><line x1="0" y1="21.428571701049805" y2="21.428571701049805" x2="142.02777099609375"></line><text x="5" y="31.428571701049805" fill="white" class="classText"><tspan x="5">string BaseClassPropertyOne</tspan><tspan x="5" dy="10">string BaseClassPropertyTwo</tspan></text><line x1="0" y1="47.857139587402344" y2="47.857139587402344" x2="142.02777099609375"></line><text x="5" y="62.857139587402344" fill="white" class="classText"></text></g><g id="classid-DerivedClass-179" class="classGroup" transform="translate(0,102.14285278320312 )"><rect x="0" y="0" width="190.99749755859375" height="42.14285659790039" class=" "></rect><text y="15" x="0"><tspan class="title" x="65.86705207824707">DerivedClass</tspan></text><line x1="0" y1="21.428571701049805" y2="21.428571701049805" x2="190.99749755859375"></line><text x="5" y="31.428571701049805" fill="white" class="classText"><tspan x="5">string DerivedClassSpecificPropertyOne</tspan></text><line x1="0" y1="37.85714340209961" y2="37.85714340209961" x2="190.99749755859375"></line><text x="5" y="52.85714340209961" fill="white" class="classText"></text></g><path d="M95.49874877929688,52.142852783203125L95.49874877929688,56.30951944986979C95.49874877929688,60.47618611653646,95.49874877929688,68.8095194498698,95.49874877929688,77.14285278320312C95.49874877929688,85.47618611653645,95.49874877929688,93.8095194498698,95.49874877929688,97.97618611653645L95.49874877929688,102.14285278320312" id="edge84" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="76.0400390625" y="65.35713958740234" width="39.15387725830078" height="16.428571701049805"></rect><text class="label" x="95.49874877929688" y="77.14285278320312" fill="red" text-anchor="middle">Inherits</text></g></svg></pre>
+<p><strong>BaseClass</strong> has two properties:</p>
+<ol>
+<li><em>BaseClassPropertyOne</em> of type <em>string</em>.</li>
+<li><em>BaseClassPropertyTwo</em> of type <em>string</em>.</li>
+</ol>
+<p><strong>DerivedClass</strong> has one single property:</p>
+<ol>
+<li><em>DerivedClassSpecificPropertyOne</em> of type <em>string</em>.</li>
+</ol>
+<h2 id="concept-explained-using-c-code.">Concept explained using C# Code.</h2>
+<p>Here is our <strong>BaseClass</strong> definition:</p>
+<pre class=" language-csharp"><code class="prism  language-csharp"><span class="token keyword">namespace</span> PolymorphismCasting
+<span class="token punctuation">{</span>
+    <span class="token comment">/// &lt;summary&gt;</span>
+    <span class="token comment">/// The BaseClass definition.</span>
+    <span class="token comment">/// &lt;/summary&gt;</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseClass</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">string</span> BaseClassPropertyOne <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token keyword">public</span> <span class="token keyword">string</span> BaseClassPropertyTwo <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>and, here is our <strong>DerivedClass</strong> definition:</p>
+<pre class=" language-csharp"><code class="prism  language-csharp"><span class="token keyword">namespace</span> PolymorphismCasting
+<span class="token punctuation">{</span>
+    <span class="token comment">/// &lt;summary&gt;</span>
+    <span class="token comment">/// DerivedClass definition.</span>
+    <span class="token comment">/// DerivedClass inherits from BaseClass.</span>
+    <span class="token comment">/// &lt;/summary&gt;</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DerivedClass</span> <span class="token punctuation">:</span> BaseClass
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">string</span> DerivedClassSpecificPropertyOne <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<p>and, lastly our <strong>Program</strong> class which contains the application main entry point, with all the neccessary explanations:</p>
+<pre class=" language-csharp"><code class="prism  language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> PolymorphismCasting
+<span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">/// &lt;summary&gt;</span>
+            <span class="token comment">/// Polymorphism Upcasting and Downcasting explained.</span>
+            <span class="token comment">/// &lt;/summary&gt;</span>
+
+            <span class="token comment">// baseClass variable stores obj ref of BaseClass instance created.</span>
+            BaseClass baseClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BaseClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// derivedClass variable stores obj ref DerivedClass instance created.</span>
+            DerivedClass derivedClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DerivedClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">/// &lt;summary&gt;</span>
+            <span class="token comment">/// Assigning a derived-class reference to a base-class variable is safe, because the de-</span>
+            <span class="token comment">/// rived -class object is an object of its base class. However, this reference can be used</span>
+            <span class="token comment">/// to refer only to base-class members. If this code refers to derived-class-only mem-</span>
+            <span class="token comment">/// bers through the base-class variable, the compiler reports errors.</span>
+            <span class="token comment">/// &lt;/summary&gt;</span>
+
+            <span class="token comment">// Upcasting.</span>
+            <span class="token comment">// Assigning a DerivedClass obj ref to a BaseClass variable.</span>
+
+            BaseClass upcasting <span class="token operator">=</span> derivedClass<span class="token punctuation">;</span>
+
+            <span class="token comment">// Compilation error - cannot access a MyDerivedClassSpecificProperty of DerivedClass.</span>
+            <span class="token comment">// BaseClass does not have a definition of MyDerivedClassSpecificProperty property.</span>
+            <span class="token comment">// However, DerivedClass has all members of BaseClass through inheritance.</span>
+            <span class="token comment">// In short, inheritance flows from top to bottom, not the way around.</span>
+
+            <span class="token comment">// var myDerivedClassSpecificPropertyOne =  upcasting.MyDerivedClassSpecificPropertyOne; // This will not compile.</span>
+
+
+            <span class="token comment">/// Attempting to assign a base-class reference to a derived-class variable is a compilation</span>
+            <span class="token comment">/// error.To avoid this error, the base -class reference must be cast to a derived-class</span>
+            <span class="token comment">/// type explicitly or must be converted using the as operator. At execution time, if</span>
+            <span class="token comment">/// the object to which the reference refers is not a derived-class object, an exception</span>
+            <span class="token comment">/// will occur(unless you use the as operator, in which case you’ll have to check the</span>
+            <span class="token comment">/// expression’s result for null). The is operator can be used to ensure that such a</span>
+            <span class="token comment">/// cast is performed only if the object is a derived-class object.</span>
+
+            <span class="token comment">// Downcasting.</span>
+            <span class="token comment">// Assigning BaseClass obj ref to a DerivedClass variable.</span>
+
+            <span class="token comment">// Compilation error - cannot implicitly convert from DerivedClass to BaseClass, explicit casting required.</span>
+            <span class="token comment">// DerivedClass thisWillResultInACompilationError = baseClass; // This will not compile.</span>
+
+            <span class="token comment">// Explicit casting.</span>
+            DerivedClass downcasting <span class="token operator">=</span> <span class="token punctuation">(</span>DerivedClass<span class="token punctuation">)</span>baseClass<span class="token punctuation">;</span>
+
+            <span class="token comment">// To avoid exceptions we can use the 'as' operator.</span>
+            DerivedClass downcatingAlternative <span class="token operator">=</span> baseClass <span class="token keyword">as</span> DerivedClass<span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Exit..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">ReadKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>That’s about it. Cya! 😊</p>
+</div>
+</body>
+
+</html>
